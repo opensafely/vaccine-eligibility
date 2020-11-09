@@ -1,3 +1,10 @@
-opensafely/chronic-cardiac-disease/2020-04-08
+opensafely/solid-organ-transplantation/2020-04-10
+opensafely/haematological-cancer/2020-04-15
+opensafely/chronic-kidney-disease/2020-04-14
+opensafely/permanent-immunosuppression/2020-06-02
+opensafely/temporary-immunosuppression/2020-04-24
+opensafely/dementia/2020-04-22
+opensafely/stroke-updated/2020-06-02
+opensafely/diabetes/2020-04-15
+opensafely/current-copd/2020-05-06
 opensafely/chronic-liver-disease/2020-06-02
-opensafely/asthma-inhaler-salbutamol-medication/2020-04-15
