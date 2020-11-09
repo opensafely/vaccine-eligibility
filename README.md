@@ -1,8 +1,6 @@
-# OpenSAFELY Research Template
+# Vaccine Eligibility
 
 Identify all patients in the country who are eligible for covid vaccine (and flu vaccine).  Primary output is population counts for covid vaccine over winter 2020 split by characteristics of interest (age, sex, geography, current conditions, previous Covid-19 infection).
-
-# _title goes here_
 
 This is the code and configuration for our paper, _tbd_
 
