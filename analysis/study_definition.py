@@ -34,6 +34,14 @@ study = StudyDefinition(
             "category": {"ratios": {"M": 0.49, "F": 0.51}},
         }
     ),
+
+ #   care_home=patients.care_home_status_as_of(
+ #       "2020-02-01",
+ #       return_expectations={
+ #           "rate": "universal",
+ #           "category": {"ratios": {"True": 0.01, "False": 0.99}},
+ #       }
+ #   ),
     
     chronic_kidney_disease=patients.with_these_clinical_events(
         chronic_kidney_disease_codes,
@@ -148,7 +156,7 @@ study = StudyDefinition(
     bmi=patients.most_recent_bmi(
         on_or_after="2010-02-01",
         minimum_age_at_measurement=16,
-        include_measurement_date=True,
+        include_measurement_date=False,
         include_month=True,
         return_expectations={
             "incidence": 0.6,
