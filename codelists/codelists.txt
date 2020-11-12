@@ -8,3 +8,4 @@ opensafely/stroke-updated/2020-06-02
 opensafely/diabetes/2020-04-15
 opensafely/current-copd/2020-05-06
 opensafely/chronic-liver-disease/2020-06-02
+opensafely/ethnicity/2020-04-27
