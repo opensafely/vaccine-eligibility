@@ -23,8 +23,9 @@ jobs:
       with:
         # It seems we can't do this with the standard GITHUB_TOKEN, but
         # have to use a personal token with the correct permissions instead
-        login-server: docker.opensafely.org
+        login-server: ghcr.io
         username: docker
+        # You need to add OPENSAFELY_DOCKER_PASSWORD as a secret to this repo for this step to work.
         password: ${{ secrets.OPENSAFELY_DOCKER_PASSWORD }}
 
     - name: Update codelists
