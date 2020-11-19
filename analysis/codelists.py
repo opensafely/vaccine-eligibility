@@ -30,6 +30,9 @@ solid_organ_transplantation_codes = codelist_from_csv(
 stroke_codes = codelist_from_csv(
     "codelists/opensafely-stroke-updated.csv", system="ctv3", column="CTV3ID"
 )
+other_neuro_codes = codelist_from_csv(
+    "codelists/opensafely-other-neurological-conditions-2020-06-02.csv", system="ctv3", column="CTV3ID"
+)
 
 ethnicity_codes = codelist_from_csv(
     "codelists/opensafely-ethnicity-2020-04-27.csv", system="ctv3", column="Code", category_column="Grouping_6",

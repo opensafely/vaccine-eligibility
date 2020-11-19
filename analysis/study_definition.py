@@ -116,6 +116,14 @@ study = StudyDefinition(
             "incidence": 0.2,
         },
     ),
+    
+    other_neuro=patients.with_these_clinical_events(
+        other_neuro_codes,
+        returning="binary_flag",
+        return_expectations={
+            "incidence": 0.2,
+        },
+    ),
         
     permanant_immunosuppression=patients.with_these_clinical_events(
         permanent_immunosuppression_codes,
