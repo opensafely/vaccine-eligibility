@@ -7,4 +7,4 @@ output/*
 .venv/
 .vscode/
 .DS_Store
-analysis/*.geojson
+analysis/MSOA.geojson
