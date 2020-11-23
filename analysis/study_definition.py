@@ -4,7 +4,7 @@ from cohortextractor import (
     codelist_from_csv,
     codelist,
     filter_codes_by_category,
-    combine_codelists
+    combine_codelists,
 )
 from codelists import *
 
@@ -34,7 +34,6 @@ study = StudyDefinition(
             "category": {"ratios": {"M": 0.49, "F": 0.51}},
         }
     ),
-
     care_home_type=patients.care_home_status_as_of(
         "2020-10-01",
         categorised_as={
@@ -53,10 +52,16 @@ study = StudyDefinition(
         },
         return_expectations={
             "rate": "universal",
-            "category": {"ratios": {"PC": 0.05, "PN": 0.05, "PS": 0.05, "U": 0.85,},},
+            "category": {
+                "ratios": {
+                    "PC": 0.05,
+                    "PN": 0.05,
+                    "PS": 0.05,
+                    "U": 0.85,
+                },
+            },
         },
     ),
-
     # Ethnicity in 6 categories
     ethnicity=patients.with_these_clinical_events(
         ethnicity_codes,
@@ -64,11 +69,12 @@ study = StudyDefinition(
         find_last_match_in_period=True,
         include_date_of_match=False,
         return_expectations={
-            "category": {"ratios": {"1": 0.2, "2":0.2, "3":0.2, "4":0.2, "5": 0.2}},
+            "category": {
+                "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}
+            },
             "incidence": 0.75,
         },
     ),
-    
     # https://github.com/ebmdatalab/tpp-sql-notebook/issues/54
     stp=patients.registered_practice_as_of(
         "2020-10-01",
@@ -104,9 +110,7 @@ study = StudyDefinition(
             "category": {"ratios": {"rural": 0.1, "urban": 0.9}},
         },
     ),
-    
     ####### HIGH RISK CODELISTS #######
-    
     # https://github.com/opensafely/codelist-development/issues/9
     solid_organ_transplantation=patients.with_these_clinical_events(
         solid_organ_transplantation_codes,
@@ -139,7 +143,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/codelist-development/issues/10 
+    # https://github.com/opensafely/codelist-development/issues/10
     haematological_cancer=patients.with_these_clinical_events(
         haematological_cancer_codes,
         returning="binary_flag",
@@ -175,7 +179,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/ics-research/issues/12 
+    # https://github.com/opensafely/ics-research/issues/12
     current_copd=patients.with_these_clinical_events(
         current_copd_codes,
         returning="binary_flag",
@@ -191,7 +195,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/codelist-development/issues/11 
+    # https://github.com/opensafely/codelist-development/issues/11
     permanant_immunosuppression=patients.with_these_clinical_events(
         permanent_immunosuppression_codes,
         returning="binary_flag",
@@ -199,7 +203,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/codelist-development/issues/11    
+    # https://github.com/opensafely/codelist-development/issues/11
     temporary_immunosuppression=patients.with_these_clinical_events(
         temporary_immunosuppression_codes,
         returning="binary_flag",
@@ -231,9 +235,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    
     ####### MODERATE RISK CODELISTS #######
-    
     # non-severe asthma - NOT DEFINED YET
     # https://github.com/opensafely/codelist-development/issues/15
     non_severe_asthma=patients.with_these_clinical_events(
@@ -267,7 +269,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/codelist-development/issues/8 
+    # https://github.com/opensafely/codelist-development/issues/8
     diabetes=patients.with_these_clinical_events(
         diabetes_codes,
         returning="binary_flag",
@@ -275,7 +277,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/risk-factors-research/issues/50   
+    # https://github.com/opensafely/risk-factors-research/issues/50
     chronic_kidney_disease=patients.with_these_clinical_events(
         chronic_kidney_disease_codes,
         returning="binary_flag",
@@ -291,7 +293,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/codelist-development/issues/5    
+    # https://github.com/opensafely/codelist-development/issues/5
     other_neuro=patients.with_these_clinical_events(
         other_neuro_codes,
         returning="binary_flag",
@@ -299,7 +301,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/codelist-development/issues/5    
+    # https://github.com/opensafely/codelist-development/issues/5
     dementia=patients.with_these_clinical_events(
         dementia_codes,
         returning="binary_flag",
@@ -307,7 +309,7 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
-    # https://github.com/opensafely/codelist-development/issues/20    
+    # https://github.com/opensafely/codelist-development/issues/20
     stroke=patients.with_these_clinical_events(
         stroke_codes,
         returning="binary_flag",
