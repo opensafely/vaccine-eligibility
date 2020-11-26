@@ -13,3 +13,5 @@ output/*
 .DS_Store
 
 .ipynb_checkpoints/
+
+codelists/old_codelists
