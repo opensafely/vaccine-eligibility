@@ -328,4 +328,14 @@ study = StudyDefinition(
             "float": {"distribution": "normal", "mean": 28, "stddev": 10},
         },
     ),
+    # https://codelists.opensafely.org/codelist/opensafely/asthma-inhaler-salbutamol-medication/2020-04-15/
+    recent_salbutamol_count=patients.with_these_medications(
+        salbutamol_codes,
+        between=["2018-02-01", "2020-02-01"],
+        returning="number_of_matches_in_period",
+        return_expectations={
+            "incidence": 0.6,
+            "int": {"distribution": "normal", "mean": 8, "stddev": 2},
+        },
+    ),
 )
