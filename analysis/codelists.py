@@ -118,3 +118,11 @@ ethnicity_codes = codelist_from_csv(
     column="Code",
     category_column="Grouping_6",
 )
+salbutamol_codes = codelist_from_csv(
+    "codelists/opensafely-asthma-inhaler-salbutamol-medication.csv",
+    system="snomed",
+    column="id",
+)
+stroke_codes = codelist_from_csv(
+    "codelists/opensafely-psychosis-schizophrenia-bipolar-affective-disease.csv", system="ctv3", column="CTV3ID"
+)

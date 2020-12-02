@@ -23,3 +23,5 @@ opensafely/other-neurological-conditions/2020-06-02
 opensafely/dementia/2020-04-22
 opensafely/stroke-updated/2020-06-02
 opensafely/ethnicity/2020-04-27
+opensafely/opensafely-asthma-inhaler-salbutamol-medication/2020-04-15
+opensafely/psychosis-schizophrenia-bipolar-affective-disease/2020-07-09
