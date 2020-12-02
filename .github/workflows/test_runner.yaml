@@ -3,6 +3,7 @@ name: Test that the project is runnable
 on: [push]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOCKER_URL: ghcr.io/opensafely
 jobs:
   test_model:
     runs-on: ubuntu-latest
