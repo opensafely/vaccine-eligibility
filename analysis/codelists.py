@@ -118,11 +118,11 @@ ethnicity_codes = codelist_from_csv(
     column="Code",
     category_column="Grouping_6",
 )
+psychosis_schizophrenia_bipolar_affective_disease_codes = codelist_from_csv(
+    "codelists/opensafely-psychosis-schizophrenia-bipolar-affective-disease.csv", system="ctv3", column="CTV3Code"
+)
 salbutamol_codes = codelist_from_csv(
     "codelists/opensafely-asthma-inhaler-salbutamol-medication.csv",
     system="snomed",
     column="id",
-)
-psychosis_schizophrenia_bipolar_affective_disease_codes = codelist_from_csv(
-    "codelists/opensafely-psychosis-schizophrenia-bipolar-affective-disease.csv", system="ctv3", column="CTV3Code"
 )
