@@ -6,17 +6,17 @@ solid_organ_transplantation_codes = codelist_from_csv(
     column="CTV3ID",
 )
 chemotherapy_or_radiotherapy_codes = codelist_from_csv(
-    "codelists/opensafely-chemotherapy-or-radiotherapy-2020-04-15.csv",
+    "codelists/opensafely-chemotherapy-or-radiotherapy.csv",
     system="ctv3",
     column="CTV3ID",
 )
 cancer_excluding_lung_and_haematological_codes = codelist_from_csv(
-    "codelists/opensafely-cancer-excluding-lung-and-haematological-2020-04-15.csv",
+    "codelists/opensafely-cancer-excluding-lung-and-haematological.csv",
     system="ctv3",
     column="CTV3ID",
 )
 lung_cancer_codes = codelist_from_csv(
-    "codelists/opensafely-lung-cancer-2020-04-15.csv",
+    "codelists/opensafely-lung-cancer.csv",
     system="ctv3",
     column="CTV3ID",
 )
@@ -26,17 +26,17 @@ haematological_cancer_codes = codelist_from_csv(
     column="CTV3ID",
 )
 bone_marrow_transplant_codes = codelist_from_csv(
-    "codelists/opensafely-bone-marrow-transplant-2020-04-15.csv",
+    "codelists/opensafely-bone-marrow-transplant.csv",
     system="ctv3",
     column="CTV3ID",
 )
 cystic_fibrosis_codes = codelist_from_csv(
-    "codelists/opensafely-cystic-fibrosis-2020-07-20.csv",
+    "codelists/opensafely-cystic-fibrosis.csv",
     system="ctv3",
     column="CTV3ID",
 )
 asthma_diagnosis_codes = codelist_from_csv(
-    "codelists/opensafely-asthma-diagnosis-2020-04-15.csv",
+    "codelists/opensafely-asthma-diagnosis.csv",
     system="ctv3",
     column="CTV3ID",
 )
@@ -44,7 +44,7 @@ current_copd_codes = codelist_from_csv(
     "codelists/opensafely-current-copd.csv", system="ctv3", column="CTV3ID"
 )
 sickle_cell_disease_codes = codelist_from_csv(
-    "codelists/opensafely-sickle-cell-disease-2020-04-14.csv",
+    "codelists/opensafely-sickle-cell-disease.csv",
     system="ctv3",
     column="CTV3ID",
 )
@@ -59,32 +59,32 @@ temporary_immunosuppression_codes = codelist_from_csv(
     column="CTV3ID",
 )
 chronic_cardiac_disease_codes = codelist_from_csv(
-    "codelists/opensafely-chronic-cardiac-disease-2020-04-08.csv",
+    "codelists/opensafely-chronic-cardiac-disease.csv",
     system="ctv3",
     column="CTV3ID",
 )
 intellectual_disability_including_downs_syndrome_codes = codelist_from_csv(
-    "codelists/opensafely-intellectual-disability-including-downs-syndrome-2020-08-27.csv",
+    "codelists/opensafely-intellectual-disability-including-downs-syndrome.csv",
     system="ctv3",
     column="CTV3ID",
 )
 dialysis_codes = codelist_from_csv(
-    "codelists/opensafely-dialysis-2020-07-16.csv",
+    "codelists/opensafely-dialysis.csv",
     system="ctv3",
     column="CTV3ID",
 )
 other_respiratory_conditions_codes = codelist_from_csv(
-    "codelists/opensafely-other-respiratory-conditions-2020-07-21.csv",
+    "codelists/opensafely-other-respiratory-conditions.csv",
     system="ctv3",
     column="CTV3ID",
 )
 heart_failure_codes = codelist_from_csv(
-    "codelists/opensafely-heart-failure-2020-05-05.csv",
+    "codelists/opensafely-heart-failure.csv",
     system="ctv3",
     column="CTV3ID",
 )
 other_heart_disease_codes = codelist_from_csv(
-    "codelists/opensafely-other-heart-disease-2020-05-11.csv",
+    "codelists/opensafely-other-heart-disease.csv",
     system="ctv3",
     column="CTV3ID",
 )
@@ -102,23 +102,25 @@ chronic_liver_disease_codes = codelist_from_csv(
     column="CTV3ID",
 )
 other_neuro_codes = codelist_from_csv(
-    "codelists/opensafely-other-neurological-conditions-2020-06-02.csv",
+    "codelists/opensafely-other-neurological-conditions.csv",
     system="ctv3",
     column="CTV3ID",
 )
-dementia_codes = codelist_from_csv(
-    "codelists/opensafely-dementia.csv", system="ctv3", column="CTV3ID"
-)
-stroke_codes = codelist_from_csv(
-    "codelists/opensafely-stroke-updated.csv", system="ctv3", column="CTV3ID"
-)
+#dementia_codes = codelist_from_csv(
+#    "codelists/opensafely-dementia.csv", system="ctv3", column="CTV3ID"
+#)
+#stroke_codes = codelist_from_csv(
+#    "codelists/opensafely-stroke-updated.csv", system="ctv3", column="CTV3ID"
+#)
 ethnicity_codes = codelist_from_csv(
-    "codelists/opensafely-ethnicity-2020-04-27.csv",
+    "codelists/opensafely-ethnicity.csv",
     system="ctv3",
     column="Code",
     category_column="Grouping_6",
 )
-
+psychosis_schizophrenia_bipolar_affective_disease_codes = codelist_from_csv(
+    "codelists/opensafely-psychosis-schizophrenia-bipolar-affective-disease.csv", system="ctv3", column="CTV3Code"
+)
 salbutamol_codes = codelist_from_csv(
     "codelists/opensafely-asthma-inhaler-salbutamol-medication.csv",
     system="snomed",

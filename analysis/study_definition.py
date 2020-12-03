@@ -302,21 +302,21 @@ study = StudyDefinition(
         },
     ),
     # https://github.com/opensafely/codelist-development/issues/5
-    dementia=patients.with_these_clinical_events(
-        dementia_codes,
-        returning="binary_flag",
-        return_expectations={
-            "incidence": 0.01,
-        },
-    ),
+    #dementia=patients.with_these_clinical_events(
+    #    dementia_codes,
+    #    returning="binary_flag",
+    #    return_expectations={
+    #        "incidence": 0.01,
+    #    },
+    #),
     # https://github.com/opensafely/codelist-development/issues/20
-    stroke=patients.with_these_clinical_events(
-        stroke_codes,
-        returning="binary_flag",
-        return_expectations={
-            "incidence": 0.01,
-        },
-    ),
+    #stroke=patients.with_these_clinical_events(
+    #    stroke_codes,
+    #    returning="binary_flag",
+    #    return_expectations={
+    #        "incidence": 0.01,
+    #    },
+    #),
     # https://github.com/ebmdatalab/tpp-sql-notebook/issues/10
     bmi=patients.most_recent_bmi(
         on_or_after="2010-02-01",
@@ -331,11 +331,17 @@ study = StudyDefinition(
     # https://codelists.opensafely.org/codelist/opensafely/asthma-inhaler-salbutamol-medication/2020-04-15/
     recent_salbutamol_count=patients.with_these_medications(
         salbutamol_codes,
-        between=["2018-02-01", "2020-02-01"],
-        returning="number_of_matches_in_period",
+        returning="binary_flag",
         return_expectations={
-            "incidence": 0.6,
-            "int": {"distribution": "normal", "mean": 8, "stddev": 2},
+            "incidence": 0.01,
+        },
+    ),
+    # 
+    psychosis_schiz_bipolar=patients.with_these_clinical_events(
+        psychosis_schizophrenia_bipolar_affective_disease_codes,
+        returning="binary_flag",
+        return_expectations={
+            "incidence": 0.01,
         },
     ),
 )
