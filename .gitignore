@@ -15,3 +15,5 @@ output/*
 .ipynb_checkpoints/
 
 codelists/old_codelists
+
+analysis/inequalities.py

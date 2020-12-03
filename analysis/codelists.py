@@ -126,3 +126,11 @@ salbutamol_codes = codelist_from_csv(
     system="snomed",
     column="id",
 )
+asplenia_codes = codelist_from_csv(
+    "codelists/opensafely-asplenia.csv", system="ctv3", column="CTV3ID"
+)
+dmards_codes = codelist_from_csv(
+    "codelists/opensafely-dmards.csv",     
+    system="snomed",
+    column="snomed_id",
+)

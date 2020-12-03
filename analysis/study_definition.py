@@ -211,6 +211,14 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
+    # https://github.com/opensafely/hydroxychloroquine-research/issues/2    
+    dmards=patients.with_these_medications(
+        dmards_codes,
+        returning="binary_flag",
+        return_expectations={
+            "incidence": 0.01,
+        },
+    ), 
     # https://github.com/opensafely/codelist-development/issues/2
     chronic_cardiac_disease=patients.with_these_clinical_events(
         chronic_cardiac_disease_codes,
@@ -344,4 +352,12 @@ study = StudyDefinition(
             "incidence": 0.01,
         },
     ),
+    # https://github.com/opensafely/codelist-development/issues/4
+    asplenia=patients.with_these_clinical_events(
+        asplenia_codes,
+        returning="binary_flag",
+        return_expectations={
+            "incidence": 0.01,
+        },
+    ),      
 )
