@@ -18,13 +18,13 @@ This is the code and configuration for our paper, _tbd_
 3. All those 75 years of age and over
 4. All those 70 years of age and over & Clinically extremely vulnerable individuals (not including pregnant women and those under 18 years of age)
 5. All those 65 years of age and over
-6. Adults aged 18 to 65 years in an at-risk group (Table 3)
+6. Adults aged 18 to 65 years in an at-risk group
 7. All those 60 years of age and over
 8. All those 55 years of age and over
 9. All those 50 years of age and over 
 10. Rest of the population (priority to be determined)
 
-## Worker Demographics (source: NHS D, Annex 1):
+## Worker Demographics (source: NHS D):
 
 The approach considered in this analysis is to calculate the vaccine priority cohorts from primary care data, mostly based on age and a set list of high/moderate risk health conditions without health care workers considered.  The age, gender and ethnicity profiles will then be analysed.  At this point the priority cohorts are adapted to include the impact of the health and care workforce with aggregate figures presented.  However, no individual analysis can be conducted at this point as we don’t have the data at a granular level to match individuals to probability of being a health and care worker.  
 
