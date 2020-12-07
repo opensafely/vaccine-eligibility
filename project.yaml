@@ -1,31 +1,19 @@
 version: '3.0'
 
 expectations:
-  population_size: 1000
+  population_size: 10000
 
 actions:
 
-  generate_cohorts:
+  generate_cohort:
     run: cohortextractor:latest generate_cohort --study-definition study_definition
     outputs:
       highly_sensitive:
         cohort: output/input.csv
 
-  run_model:
-    run: stata-mp:latest analysis/model.do
-    needs: [generate_cohorts]
-    outputs:
-      moderately_sensitive:
-        log: logs/model.log
-
-  run_all:
-    needs:
-      - run_model
-    # In order to be valid this action needs to define a run commmand and some
-    # output. We don't really care what these are but the below does the trick.
-    # In a future release of the platform, this special action won't need to be
-    # defined at all.
-    run: cohortextractor:latest --version
-    outputs:
-      moderately_sensitive:
-        whatever: project.yaml
+  run_notebook:
+    run: jupyter:latest jupyter nbconvert /workspace/analysis/Study_analysis.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400
+        needs: [generate_cohort]
+        outputs:
+          moderately_sensitive:
+            notebook: output/Study_analysis.html
