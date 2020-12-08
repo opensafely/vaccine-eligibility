@@ -13,7 +13,7 @@ actions:
 
   run_notebook:
     run: jupyter:latest jupyter nbconvert /workspace/analysis/Study_analysis.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400
-        needs: [generate_cohort]
-        outputs:
-          moderately_sensitive:
-            notebook: output/Study_analysis.html
+    needs: [generate_cohort]
+    outputs:
+      moderately_sensitive:
+        notebook: output/Study_analysis.html
