@@ -12,7 +12,7 @@ actions:
         cohort: output/input.csv
 
   run_notebook:
-    run: jupyter:latest jupyter nbconvert analysis/Study_analysis.ipynb --execute --to html --output-dir=output --ExecutePreprocessor.timeout=86400
+    run: jupyter:latest jupyter nbconvert /analysis/Study_Analysis.ipynb --execute --to html --output-dir=/output --ExecutePreprocessor.timeout=86400
     needs: [generate_cohort]
     outputs:
       moderately_sensitive:
