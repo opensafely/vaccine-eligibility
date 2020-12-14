@@ -17,3 +17,9 @@ actions:
     outputs:
       moderately_sensitive:
         notebook: output/Study_Analysis.html
+        csv1: output/PriorityCounts_NoWorkforce.csv
+        csv2: output/PriorityCounts_WithWorkforce.csv
+        csv3: output/clinExtrVuln_propensity.csv
+        csv4: output/atRisk_propensity.csv
+        png1: output/waterfall_age.png
+        png2: output/waterfall_wf.png
