@@ -327,12 +327,12 @@ study = StudyDefinition(
     #),
     # https://github.com/ebmdatalab/tpp-sql-notebook/issues/10
     bmi=patients.most_recent_bmi(
-        on_or_after="2010-02-01",
+        on_or_after="2020-02-01",
         minimum_age_at_measurement=16,
         include_measurement_date=False,
         include_month=True,
         return_expectations={
-            "incidence": 0.3,
+            "incidence": 0.9,
             "float": {"distribution": "normal", "mean": 28, "stddev": 10},
         },
     ),
