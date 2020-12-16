@@ -156,10 +156,9 @@ study = StudyDefinition(
     bone_marrow_transplant=patients.with_these_clinical_events(
         bone_marrow_transplant_codes,
         between=["2020-04-01", "2020-10-01"],
-        returning="number_of_matches_in_period",
+        returning="binary_flag",
         return_expectations={
-            "int": {"distribution": "normal", "mean": 1, "stddev": 0.1},
-            "incidence": 0.05,
+            "incidence": 0.01,
         },
     ),
     # https://github.com/opensafely/codelist-development/issues/30

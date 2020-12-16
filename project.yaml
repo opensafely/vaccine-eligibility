@@ -11,6 +11,13 @@ actions:
       highly_sensitive:
         cohort: output/input.csv
 
+  generate_report:
+    run: python:latest analysis/report.py output output  
+    needs: [generate_cohort]
+    outputs: 
+      moderately_sensitive:
+        report: output/descriptives.html
+
   run_notebook:
     run: jupyter:latest jupyter nbconvert /workspace/analysis/Study_Analysis.ipynb --execute --to html --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400
     needs: [generate_cohort]
