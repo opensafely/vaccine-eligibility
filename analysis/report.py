@@ -9,6 +9,8 @@ from pandas.api.types import is_categorical_dtype
 from pandas.api.types import is_bool_dtype
 from pandas.api.types import is_datetime64_dtype
 from pandas.api.types import is_numeric_dtype
+import pandas as pd
+
 
 import seaborn as sns
 import datetime
@@ -23,6 +25,7 @@ def make_chart(name, series, dtype):
     img = BytesIO()
     # Setting figure sizes in seaborn is a bit weird:
     # https://stackoverflow.com/a/23973562/559140
+
     if is_categorical_dtype(dtype):
         sns.set_style("ticks")
         sns.catplot(
@@ -52,8 +55,8 @@ def make_chart(name, series, dtype):
         series.hist(bins=int(bins), ax=ax)
         plt.xticks(rotation=45, ha="right")
     elif is_numeric_dtype(dtype):
-        # Trim percentiles and negatives which are usually bad data
         series = series.fillna(0)
+        # Trim percentiles and negatives which are usually bad data
         series = series[
             (series < np.percentile(series, 95))
             & (series > np.percentile(series, 5))
@@ -72,37 +75,58 @@ def make_chart(name, series, dtype):
     return base64.b64encode(img.read()).decode("UTF-8")
 
 
+def suppress_numbers(series, dtype):
+    suppress_numbers_under = 6
+    if is_categorical_dtype(dtype) or is_bool_dtype(dtype):
+        if ~np.any(series.value_counts() < suppress_numbers_under):
+            return series
+    elif is_datetime64_dtype(dtype) or is_numeric_dtype(dtype):
+        if (
+            ~np.any(pd.isnull(series).value_counts() < suppress_numbers_under)
+            and series[~pd.isnull(series)].count() >= suppress_numbers_under
+        ):
+            return series
+    return pd.Series()
+
 
 def _make_cohort_report(input_dir, output_dir, study_name, suffix):
     study = load_study_definition(study_name)
 
     df = study.csv_to_df(f"{input_dir}/input{suffix}.csv")
-    descriptives = df.describe(include="all")
-
+    html = ""
+    contents = "<h2>Contents</h2><ul>"
     for name, dtype in zip(df.columns, df.dtypes):
         if name == "patient_id":
             continue
-        main_chart = '<div><img src="data:image/png;base64,{}"/></div>'.format(
-            make_chart(name, df[name], dtype)
-        )
-        empty_values_chart = ""
-        if is_datetime64_dtype(dtype):
-            # also do a null / not null plot
-            empty_values_chart = (
-                '<div><img src="data:image/png;base64,{}"/></div>'.format(
-                    make_chart(name, df[name].isnull(), bool)
-                )
+        contents += f"<li><a href='#{name}'>{name}</a></li>"
+        series = suppress_numbers(df[name], dtype)
+        if len(series):
+            descriptives = series.describe()
+            main_chart = '<div><img src="data:image/png;base64,{}"/></div>'.format(
+                make_chart(name, df[name], dtype)
             )
-        elif is_numeric_dtype(dtype):
-            # also do a null / not null plot
-            empty_values_chart = (
-                '<div><img src="data:image/png;base64,{}"/></div>'.format(
-                    make_chart(name, df[name] > 0, bool)
-                )
+            empty_values_chart = "n/a"
+            if np.any(pd.isnull(series)):
+                if is_datetime64_dtype(dtype):
+                    # also do a null / not null plot
+                    empty_values_chart = '<div><img src="data:image/png;base64,{}"/></div>'.format(
+                        make_chart(name, df[name].isnull(), bool)
+                    )
+                elif is_numeric_dtype(dtype):
+                    # also do a null / not null plot
+                    empty_values_chart = '<div><img src="data:image/png;base64,{}"/></div>'.format(
+                        make_chart(name, df[name] > 0, bool)
+                    )
+            descriptives.loc["values"] = main_chart
+            descriptives.loc["nulls"] = empty_values_chart
+            html += f"<a name='{name}'></a><h2>{name}</h2>"
+            html += descriptives.to_frame().to_html(
+                escape=False, na_rep="", justify="left", border=0
             )
-        descriptives.loc["values", name] = main_chart
-        descriptives.loc["nulls", name] = empty_values_chart
-
+        else:
+            html += f"<a name='{name}'></a><h2>{name}</h2>"
+            html += f"outputs suppressed (low number suppression)"
+    contents += "</ul>"
     with open(f"{output_dir}/descriptives{suffix}.html", "w") as f:
 
         f.write(
@@ -132,8 +156,8 @@ def _make_cohort_report(input_dir, output_dir, study_name, suffix):
 </head>
 <body>"""
         )
-
-        f.write(descriptives.to_html(escape=False, na_rep="", justify="left", border=0))
+        f.write(contents)
+        f.write(html)
         f.write("</body></html>")
     print(f"Created cohort report at {output_dir}/descriptives{suffix}.html")
 
@@ -141,6 +165,8 @@ def _make_cohort_report(input_dir, output_dir, study_name, suffix):
 def make_cohort_report(input_dir, output_dir):
     for study_name, suffix in list_study_definitions():
         _make_cohort_report(input_dir, output_dir, study_name, suffix)
-        
-if __name__ == "__main__": 
-    make_cohort_report(sys.argv[1],sys.argv[2])        
+
+
+if __name__ == "__main__":
+    make_cohort_report(sys.argv[1], sys.argv[2])
+
