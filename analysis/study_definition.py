@@ -16,7 +16,7 @@ study = StudyDefinition(
     },
     # This line defines the study population
     population=patients.registered_with_one_practice_between(
-        "2019-02-01", "2020-10-01"
+        "2019-02-01", "2020-12-31"
     ),
     # The rest of the lines define the covariates with associated GitHub issues
     # https://github.com/ebmdatalab/tpp-sql-notebook/issues/33
@@ -155,11 +155,10 @@ study = StudyDefinition(
     # https://github.com/opensafely/codelist-development/issues/10
     bone_marrow_transplant=patients.with_these_clinical_events(
         bone_marrow_transplant_codes,
-        between=["2020-04-01", "2020-10-01"],
-        returning="number_of_matches_in_period",
+        between=["2020-07-01", "2020-12-31"],
+        returning="binary_flag",
         return_expectations={
-            "int": {"distribution": "normal", "mean": 1, "stddev": 0.1},
-            "incidence": 0.05,
+            "incidence": 0.01,
         },
     ),
     # https://github.com/opensafely/codelist-development/issues/30
@@ -327,12 +326,12 @@ study = StudyDefinition(
     #),
     # https://github.com/ebmdatalab/tpp-sql-notebook/issues/10
     bmi=patients.most_recent_bmi(
-        on_or_after="2010-02-01",
+        on_or_after="2020-02-01",
         minimum_age_at_measurement=16,
         include_measurement_date=False,
         include_month=True,
         return_expectations={
-            "incidence": 0.3,
+            "incidence": 0.9,
             "float": {"distribution": "normal", "mean": 28, "stddev": 10},
         },
     ),
@@ -359,5 +358,20 @@ study = StudyDefinition(
         return_expectations={
             "incidence": 0.01,
         },
-    ),      
+    ),  
+    
+    covid_vaccine_tpp_table=patients.with_tpp_vaccination_record(
+        target_disease_matches="SARS-2 CORONAVIRUS",
+        on_or_after="2020-12-01",  
+        find_first_match_in_period=True,
+        returning="date",
+        date_format="YYYY-MM",
+        return_expectations={
+            "incidence": 0.01,
+            "date": {
+                "earliest": "2020-12-08",  # first vaccine administered on the 8/12
+                "latest": "2020-12-14",
+            }
+        },
+    ),    
 )
