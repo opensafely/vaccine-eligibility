@@ -3,7 +3,6 @@ name: Test that the project is runnable
 on: [push]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  DOCKER_URL: ghcr.io/opensafely
 jobs:
   test_model:
     runs-on: ubuntu-latest
@@ -24,7 +23,7 @@ jobs:
       with:
         # It seems we can't do this with the standard GITHUB_TOKEN, but
         # have to use a personal token with the correct permissions instead
-        login-server: ghcr.io
+        login-server: docker.opensafely.org
         username: docker
         # You need to add OPENSAFELY_DOCKER_PASSWORD as a secret to this repo for this step to work.
         password: ${{ secrets.OPENSAFELY_DOCKER_PASSWORD }}
