@@ -16,7 +16,7 @@ study = StudyDefinition(
     },
     # This line defines the study population
     population=patients.registered_with_one_practice_between(
-        "2019-02-01", "2020-10-01"
+        "2019-02-01", "2020-12-31"
     ),
     # The rest of the lines define the covariates with associated GitHub issues
     # https://github.com/ebmdatalab/tpp-sql-notebook/issues/33
@@ -155,7 +155,7 @@ study = StudyDefinition(
     # https://github.com/opensafely/codelist-development/issues/10
     bone_marrow_transplant=patients.with_these_clinical_events(
         bone_marrow_transplant_codes,
-        between=["2020-04-01", "2020-10-01"],
+        between=["2020-07-01", "2020-12-31"],
         returning="binary_flag",
         return_expectations={
             "incidence": 0.01,
@@ -358,5 +358,17 @@ study = StudyDefinition(
         return_expectations={
             "incidence": 0.01,
         },
-    ),      
+    ),  
+    
+    covid_vaccine_tpp_table=patients.with_tpp_vaccination_record(
+        target_disease_matches="COVID",
+        between=["2020-11-01", "2020-12-31"],  # current flu season
+        find_first_match_in_period=True,
+        returning="date",
+        date_format="YYYY-MM",
+        return_expectations={
+            "incidence": 0.01,
+            "date": {"earliest": "2020-11-01", "latest": "2020-12-31"}
+        },
+    ),    
 )
