@@ -28,6 +28,5 @@ actions:
         csv3: output/clinExtrVuln_propensity.csv
         csv4: output/atRisk_propensity.csv
         csv5: output/VaccinatedByPriorityByMonth.csv
-        csv6: output/VaccinatedByPriorityByMonth_2.csv
         png1: output/waterfall_age.png
         png2: output/waterfall_wf.png

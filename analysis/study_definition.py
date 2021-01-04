@@ -374,19 +374,4 @@ study = StudyDefinition(
             }
         },
     ),  
-    
-    covid2_vaccine_tpp_table=patients.with_tpp_vaccination_record(
-        target_disease_matches="SARS-CORONAVIRUS 2",
-        on_or_after="2020-12-01",  
-        find_first_match_in_period=True,
-        returning="date",
-        date_format="YYYY-MM",
-        return_expectations={
-            "incidence": 0.01,
-            "date": {
-                "earliest": "2020-12-08",  # first vaccine administered on the 8/12
-                "latest": "2020-12-14",
-            }
-        },
-    ),   
 )
