@@ -1,10 +1,13 @@
+# Status of Work
+
+This work was conducted between October 2020 and January 2021. In January 2021 this analysis was superseeded by the "SARS-CoV2 (COVID-19) Vaccine Uptake Reporting Specification" - https://github.com/opensafely/primis-covid-vacc-uptake-spec.  It is published here as record but not to be used for onward development, decision making or analysis.
+
 # Vaccine Eligibility
 
 Calculate counts of eligble patients for the Covid vaccine based on the priorities set out in the [Green Book](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941450/Greenbook_chapter_14a_v2.pdf) and [GOV advice](https://www.gov.uk/government/publications/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19#cev) for clinically extremely vulnerable.
 
-This is the code and configuration for our paper, _tbd_
+Monitors 1st and 2nd dose vaccinations through TPP vaccination record for target_disease_matches="SARS-2 CORONAVIRUS"
 
-* The paper is not released yet
 * Raw model outputs, including charts, crosstabs, etc, are in `released_analysis_results/`
 * If you are interested in how we defined our variables, take a look at the [study definition](analysis/study_definition.py); this is written in `python`, but non-programmers should be able to understand what is going on there
 * If you are interested in how we defined our code lists, look in the [codelists folder](./codelists/).
