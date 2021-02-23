@@ -1,6 +1,8 @@
-# Status of Work
+# Status of Work - Superseded
 
-This work was conducted between October 2020 and January 2021. In January 2021 this analysis was superseeded by the "SARS-CoV2 (COVID-19) Vaccine Uptake Reporting Specification" - https://github.com/opensafely/primis-covid-vacc-uptake-spec.  It is published here as record but not to be used for onward development, decision making or analysis.
+This work was conducted between October 2020 and January 2021. In January 2021 this analysis was superseeded by the "SARS-CoV2 (COVID-19) Vaccine Uptake Reporting Specification" - https://github.com/opensafely/primis-covid-vacc-uptake-spec.  It is published here as record but not to be used for onward development, decision making or analysis.  
+
+A vaccine uptake report has since been pre-printed https://doi.org/10.1101/2021.01.25.21250356 
 
 # Vaccine Eligibility
 
